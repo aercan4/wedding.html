@@ -8,11 +8,16 @@ extends ../_includes/layout
 block vars
     - var showHeader = true;
     - var showFooter = true;
+    - var headerClass = "header--light";
 
 block append head
-    title Anasayfa | Startup Project
+    title Anasayfa | Roha
 
 block content
     .index
-        .container 
-            .title.title--4xl Start Your Project
+        .index-intro
+            .hero
+                img(src="/assets/img/dummy.jpg", alt="Hero Image").hero-img
+                .hero-content
+                    h1.title.title--5xl.title--white.hero-title.title--uppercase Roha Garden
+                    p.text.text--white Aşkınızı Unutulmaz Bir Masala Dönüştürüyoruz
