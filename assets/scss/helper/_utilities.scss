@@ -1,0 +1,106 @@
+@use "../config/mixins";
+@use "../config/variable";
+
+@for $i from 0 through 6 {
+  .mb-#{$i} {
+    margin-bottom: #{$i}rem;
+  }
+
+  .mbi-#{$i} {
+    margin-bottom: #{$i}rem;
+  }
+
+  .mt-#{$i} {
+    margin-top: #{$i}rem;
+  }
+
+  .ml-#{$i} {
+    margin-left: #{$i}rem;
+  }
+
+  .mr-#{$i} {
+    margin-right: #{$i}rem;
+  }
+
+  .pb-#{$i} {
+    padding-bottom: #{$i}rem;
+  }
+
+  .pt-#{$i} {
+    padding-top: #{$i}rem;
+  }
+
+  .pi-#{$i} {
+    padding: #{$i}rem;
+  }
+
+  .pri-#{$i} {
+    padding-right: #{$i}rem;
+  }
+
+  .pbi-#{$i} {
+    padding-bottom: #{$i}rem;
+  }
+}
+
+
+.scroll-disabled {
+  overflow: hidden !important;
+}
+
+
+
+
+
+.fw-300 {
+  font-weight: 300 !important;
+}
+
+.fw-400 {
+  font-weight: 400 !important;
+}
+
+.fw-500 {
+  font-weight: 500 !important;
+}
+
+.fw-600 {
+  font-weight: 600 !important;
+}
+
+.fw-700 {
+  font-weight: 700 !important;
+
+}
+
+.fw-800 {
+  font-weight: 800 !important;
+}
+
+.fw-900 {
+  font-weight: 900 !important;
+}
+
+
+
+span {
+  &.colored-green {
+    color: variable.$c-green;
+  }
+
+  &.colored-black {
+    color: variable.$c-black;
+  }
+
+  &.colored-red {
+    color: variable.$c-red;
+  }
+
+  &.colored-green {
+    color: variable.$c-green;
+  }
+}
+
+.d-block {
+  display: block;
+}

@@ -1,0 +1,79 @@
+doctype html
+html(lang="en")
+  head
+    // META
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1")
+    
+
+    // FAVICON
+    //- link(rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon.png")
+    //- link(rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon/favicon.png")
+
+    // LIBS
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.7.1/swiper-bundle.min.css")
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.css")
+    link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modal-video@2.4.8/css/modal-video.min.css")
+
+    // MAIN CSS
+    link(rel="stylesheet" href="assets/css/style.css")
+
+    block head
+    block styles
+
+  block vars
+    - var showHeader = true
+    - var showFooter = true
+
+  body(class=bodyClass)
+
+    // HEADER
+    if showHeader
+      header.header(class=headerClass)
+        a.logo(href="./")
+          img(src="assets/img/logo.png" alt="Startup Project")
+
+        nav.header-menu
+          .header-menu-item.has-submenu
+            .header-menu-item__title Menu Title
+              .header-menu-item-icon.icon-font
+                svg.icon.icon-font
+                  use(xlink:href="assets/icons/icons.svg#icon-down")
+            .submenu
+              a.submenu-item(href="#") Menu Subtitle
+              a.submenu-item(href="#") Menu Subtitle
+              a.submenu-item(href="#") Menu Subtitle
+          a.header-menu-item(href="#") 
+            .header-menu-item__title Menu Title
+          a.header-menu-item(href="#") 
+            .header-menu-item__title Menu Title
+          a.header-menu-item(href="#") 
+            .header-menu-item__title Menu Title
+
+        .header-menu-opener.js-open-menu
+          span
+          span
+          span
+
+    // CONTENT
+    block content
+
+    // FOOTER
+    block footer
+        .overlay
+        if showFooter
+          footer.footer
+            
+              
+    
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+    script(src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.7.1/swiper-bundle.min.js")
+    script(src="https://cdn.jsdelivr.net/npm/modal-video@2.4.8/js/jquery-modal-video.min.js")
+
+    // MAIN JS
+    script(src="assets/js/all.js")
+
+    block scripts

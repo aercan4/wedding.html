@@ -1,0 +1,31 @@
+{
+  "name": "Startup Project",
+  "version": "1.0.0",
+  "description": "Startup Project – Projeler, Hizmetler ve İletişim",
+  "main": "index.js",
+  "scripts": {
+    "build": "eleventy",
+    "build:css": "sass assets/scss/style.scss _site/assets/css/style.css --style=expanded --source-map --load-path=node_modules",
+    "prebuild": "mkdir -p _site/assets/css",
+    "dev": "eleventy --serve",
+    "watch": "eleventy --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.8.0",
+  "type": "module",
+  "dependencies": {
+    "@11ty/eleventy": "^3.1.5",
+    "@11ty/eleventy-plugin-pug": "^1.0.0"
+  },
+  "devDependencies": {
+    "@11ty/eleventy-img": "^6.0.2",
+    "@11ty/eleventy-plugin-bundle": "^3.0.1",
+    "@prettier/plugin-pug": "^3.3.0",
+    "glob": "^11.0.1",
+    "prettier": "^3.5.3",
+    "sass": "^1.86.3",
+    "svg-sprite": "^2.0.4"
+  }
+}

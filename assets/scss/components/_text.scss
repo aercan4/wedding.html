@@ -1,0 +1,68 @@
+@use "sass:color";
+@use "sass:math";
+
+@use "../config/mixins";
+@use "../config/variable";
+
+.text {
+  font-size: var(--font-size-text);
+  line-height: 1.6em;
+  font-weight: 400;
+  color: variable.$c-text;
+  letter-spacing: 0.36px;
+  font-feature-settings: 'salt' on;
+
+  strong {
+    font-weight: 500;
+    color: variable.$c-black;
+  }
+
+  span.colored-black {
+    color: variable.$c-text;
+  }
+
+  &--white {
+    color: #fff;
+  }
+
+  &--black {
+    color: variable.$c-black;
+  }
+
+  &--light {
+    color: rgba(variable.$c-black, .6);
+  }
+
+
+  &--center {
+    text-align: center;
+  }
+
+  &--lg {
+    font-size: 1.7rem;
+
+    @include mixins.bp(mobile) {
+      font-size: 1.5rem;
+    }
+  }
+
+  &--md {
+    font-size: 1.6rem;
+
+    @include mixins.bp(mobile) {
+      font-size: 1.5rem;
+    }
+  }
+
+  &--sm {
+    font-size: 1.5rem;
+  }
+
+  &--xl {
+    font-size: 3rem;
+  }
+
+  &--clickable {
+    cursor: pointer;
+  }
+}

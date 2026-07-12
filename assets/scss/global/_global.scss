@@ -1,0 +1,238 @@
+@use "sass:color";
+@use "sass:math";
+@use "../config/mixins";
+@use "../config/variable";
+
+html,
+body {
+  width: 100%;
+  font-family: variable.$font-family-base;
+
+}
+
+html {
+  font-size: 10px;
+
+  @include mixins.bp(laptop) {
+    font-size: 9px;
+  }
+
+  @include mixins.bp(desktop) {
+    font-size: 7px;
+  }
+
+  @include mixins.bp(tablet) {
+    font-size: 8px;
+  }
+
+  @include mixins.bp(mobile) {
+    font-size: 10px;
+  }
+
+  @include mixins.bp(mobile-m-small) {
+    font-size: 9px;
+  }
+
+  @include mixins.bp(mobile-x-small) {
+    font-size: 8px;
+  }
+}
+
+body {
+  font-size: 1.6rem;
+  background: variable.$c-white;
+  transition: variable.$transition;
+  color: variable.$c-text;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility !important;
+}
+
+.container {
+  max-width: var(--container-width);
+  padding: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+
+  @include mixins.bp(tablet) {
+    max-width: 100%;
+    padding-left: var(--container-pusher);
+    padding-right: var(--container-pusher);
+  }
+
+  &--small {
+    max-width: var(--container-width-small);
+
+    @include mixins.bp(tablet) {
+      max-width: 100%;
+      padding-left: var(--container-pusher);
+      padding-right: var(--container-pusher);
+    }
+  }
+}
+
+
+
+
+// Overlay
+
+.overlay {
+  background: rgba(variable.$c-black, .5);
+  position: fixed;
+  z-index: 1200;
+  z-index: 102;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+
+
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+}
+
+
+.hidden {
+  display: none !important;
+}
+
+.modal-video-close-btn {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+  background: variable.$c-white;
+  width: 46px;
+  height: 46px;
+  transition: variable.$transition;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include mixins.bp(mobile) {
+    top: -5px;
+    width: 40px;
+    height: 40px;
+    transform: translateY(-100%);
+  }
+
+  &:hover,
+  &:focus {
+    background-color: color.adjust(variable.$c-white, $lightness: -10%);
+    outline: 0;
+
+    &::after,
+    &::before {
+      background: variable.$c-black;
+    }
+
+    &::before {
+      transform: rotate(180deg);
+    }
+
+    &::after {
+      opacity: 0;
+      transform: rotate(180deg);
+    }
+  }
+
+  &::before {
+    transform: rotate(45deg);
+  }
+
+  &::after {
+    transform: rotate(-45deg);
+  }
+
+  &::after,
+  &::before {
+    content: "";
+    position: absolute;
+    top: 28px;
+    left: 13px;
+    width: 20px;
+    height: 3px;
+    background-color: variable.$c-black;
+    transition: variable.$transition;
+
+    @include mixins.bp(mobile) {
+      left: 10px;
+      top: 25px;
+    }
+  }
+}
+
+.modal-video-body {
+  @include mixins.bp(r-laptop-s) {
+    max-width: var(--container-width);
+  }
+}
+
+// .modal-video-movie-wrap {
+//   border-radius: 2.4rem;
+
+//   @include mixins.bp(mobile) {
+//     border-radius: 1.2rem;
+//   }
+
+//   iframe {
+//     border-radius: 2.4rem;
+
+//     @include mixins.bp(mobile) {
+//       border-radius: 1.2rem;
+//     }
+//   }
+// }
+
+
+
+*[data-fancybox]:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+.nice-scroll {
+  &::-webkit-scrollbar {
+    width: 4px;
+    margin-right: 2rem;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    margin-right: 1rem;
+    padding-right: 1rem;
+    // border-radius: 1rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(variable.$c-black, .1);
+    // border-radius: 1rem;
+
+  }
+}
+
+
+.only-desktop {
+  @include mixins.bp(tablet) {
+    display: none !important;
+  }
+}
+
+.only-mobile {
+  @include mixins.bp(r-tablet) {
+    display: none !important;
+  }
+}
+
+.js-modal-btn {
+  cursor: pointer;
+}

@@ -1,0 +1,119 @@
+@use "sass:color";
+@use "../config/mixins";
+@use "../config/variable";
+
+
+
+.btn {
+  width: auto;
+  text-align: center;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 5.4rem;
+  user-select: none;
+  position: relative;
+  transition: variable.$transition;
+  font-size: 1.3rem;
+  font-weight: 700;
+  padding: 0 3rem;
+  cursor: pointer;
+  box-sizing: border-box;
+  text-decoration: none;
+  letter-spacing: 0.26px;
+
+  @include mixins.bp(tablet) {
+    height: 5.2rem;
+    padding: 0 2.8rem;
+  }
+
+  @include mixins.bp(mobile) {
+    height: 4.4rem;
+    padding: 0 2.4rem;
+  }
+
+  &:hover {
+    @include mixins.bp(r-tablet) {
+      background: color.adjust(variable.$c-black, $lightness: -10%);
+    }
+  }
+
+  &__icon {
+    transition: variable.$transition;
+  }
+
+
+  &--sm {
+    height: 4.8rem;
+  }
+
+  &--black {
+    background-color: variable.$c-black;
+    color: variable.$c-white;
+
+    &:hover {
+      background: color.adjust(variable.$c-black, $lightness: -10%);
+    }
+  }
+
+  &--white {
+    background-color: variable.$c-white;
+    color: variable.$c-black;
+
+    &:hover {
+      background: color.adjust(variable.$c-white, $lightness: -10%);
+    }
+  }
+
+  &--i {
+    padding: 0;
+    width: 5rem;
+    height: 5rem;
+    font-size: 2rem;
+
+    @include mixins.bp(mobile) {
+      font-size: 1.7rem;
+    }
+
+
+    &:hover {
+      @include mixins.bp(r-tablet) {
+        .btn__icon {
+          transform: unset;
+        }
+      }
+    }
+
+    @include mixins.bp(tablet) {
+      width: 3.6rem;
+      height: 3.6rem;
+    }
+
+
+    &-right,
+    &-left {
+      gap: 1rem;
+    }
+  }
+
+  &--full {
+    width: 100%;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.loadmore {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5rem;
+
+  @include mixins.bp(tablet) {
+    margin-top: 4rem;
+  }
+}

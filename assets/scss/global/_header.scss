@@ -1,0 +1,338 @@
+@use "sass:color";
+@use "sass:math";
+@use "../config/mixins";
+@use "../config/variable";
+
+
+.header {
+  width: 100%;
+  padding: 0 var(--container-pusher);
+  border-bottom: 1px solid variable.$c-border;
+  height: var(--header-height);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: variable.$transition;
+  background: variable.$c-white;
+
+  &.header--light {
+    background: transparent;
+    border-bottom: 1px solid rgba(variable.$c-white, 0.15);
+
+    .logo {
+      img {
+        filter: brightness(0) invert(1);
+      }
+    }
+
+    .header-menu {
+      &-item {
+        &__title {
+          color: variable.$c-white;
+
+          &:hover {
+            color: adjust-color($color: variable.$c-white, $lightness: -20%);
+          }
+        }
+      }
+
+      &-opener {
+        span {
+          background: variable.$c-white;
+        }
+      }
+    }
+  }
+
+  
+
+  &.scrolled {
+    background: variable.$c-white;
+    .header-menu-opener span {
+      background: variable.$c-black;
+    }
+
+    .header-menu-item {
+      &__title {
+        color: variable.$c-black;
+
+        &:hover {
+          color: adjust-color($color: variable.$c-black, $lightness: -10%);
+        }
+      }
+    }
+
+    .logo img {
+      filter: unset;
+      transition: filter 0.3s ease;
+    }
+  }
+
+
+  
+
+  &.active {
+
+    .header-menu {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+
+
+    .logo {
+      img {
+        filter: unset;
+      }
+    }
+  }
+
+  .logo {
+    height: 5.4rem;
+
+    @include mixins.bp(mobile) {
+      height: 4.6rem;
+    }
+
+    img {
+      height: 100%;
+      width: auto;
+      transition: variable.$transition;
+    }
+  }
+
+
+
+  &-menu {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    gap: 7.2rem;
+
+    @include mixins.bp(tablet) {
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      flex-direction: column;
+      height: calc(100dvh - var(--header-height));
+      gap: 0;
+      left: 0;
+      align-items: flex-start;
+      width: 100vw;
+      top: calc(var(--header-height));
+      background: variable.$c-white;
+      opacity: 0;
+      pointer-events: none;
+      overflow-y: auto;
+      overflow-x: hidden;
+      transition: variable.$transition;
+    }
+
+    &-item {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      position: relative;
+
+      @include mixins.bp(tablet) {
+        padding: 0 var(--container-pusher);
+        width: 100%;
+        color: variable.$c-black;
+        border-bottom: 1px solid variable.$c-border;
+        height: unset;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      @include mixins.bp(tablet) {
+        &:hover {
+          color: adjust-color($color: variable.$c-black, $lightness: 20%);
+        }
+      }
+
+      &.active {
+        &::after {
+          opacity: 1;
+        }
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 2px;
+        width: 100%;
+        background: variable.$c-black;
+        opacity: 0;
+        pointer-events: none;
+
+        @include mixins.bp(tablet) {
+          display: none;
+        }
+      }
+
+      &.has-submenu {
+        cursor: pointer;
+
+        &:hover {
+          @include mixins.bp(r-tablet) {
+            .submenu {
+              opacity: 1;
+              pointer-events: auto;
+            }
+
+            .header-menu-item-icon {
+              transform: scale(1, -1);
+            }
+          }
+        }
+      }
+
+      &__title {
+        font-size: 1.7rem;
+        font-weight: 400;
+        color: variable.$c-black;
+        letter-spacing: 0.51px;
+        display: flex;
+        align-items: center;
+        gap: .8rem;
+        transition: variable.$transition;
+        height: 100%;
+
+        @include mixins.bp(tablet) {
+          height: 5rem;
+          width: 100%;
+          justify-content: space-between;
+          color: variable.$c-black !important;
+        }
+
+        &.active {
+          @include mixins.bp(tablet) {
+            &+.submenu {
+              max-height: 1000px;
+            }
+
+            .header-menu-item-icon {
+              transform: scale(1, -1);
+            }
+          }
+        }
+
+        &:hover {
+          @include mixins.bp(r-tablet) {
+            color: variable.$c-black;
+          }
+        }
+      }
+
+      &-icon {
+        font-size: 1.1rem;
+        transition: variable.$transition;
+      }
+
+
+      .submenu {
+        padding: 1.6rem 2rem;
+        position: absolute;
+        left: 0;
+        top: calc(100% - 2.5rem);
+        border: 1px solid variable.$c-border;
+        background: variable.$c-white;
+        box-shadow: 0 24px 50px -40px rgba(0, 0, 0, 0.40);
+        display: flex;
+        flex-direction: column;
+        transition: variable.$transition;
+        opacity: 0;
+        pointer-events: none;
+        min-width: 26rem;
+        z-index: 1;
+
+        @include mixins.bp(tablet) {
+          position: static;
+          box-shadow: none;
+          border: none;
+          padding: 0 1.6rem;
+          width: 100%;
+          min-width: unset;
+          max-height: 0;
+          overflow: hidden;
+          opacity: 1;
+          pointer-events: auto;
+        }
+
+        &-item {
+          padding: 1rem 0;
+          font-size: 1.7rem;
+          color: rgba(variable.$c-black, 0.9);
+          letter-spacing: 0.51px;
+
+
+          &:hover {
+            color: variable.$c-black;
+          }
+
+          &:last-child {
+            @include mixins.bp(tablet) {
+              padding-bottom: 2.4rem;
+            }
+          }
+        }
+      }
+    }
+
+
+    &-opener {
+      display: flex;
+      width: 25px;
+      height: 100%;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+
+
+      @include mixins.bp(r-tablet) {
+        display: none;
+      }
+
+      span {
+        display: block;
+        height: 2px;
+        background: variable.$c-black;
+        width: 100%;
+        transition: variable.$transition;
+      }
+
+      &.active {
+        height: unset;
+        align-self: unset;
+        justify-content: unset;
+        gap: 14px;
+
+        span {
+          background: variable.$c-black !important;
+
+          &:nth-child(2) {
+            display: none;
+          }
+
+          &:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+          }
+
+          &:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+          }
+        }
+      }
+    }
+  }
+}

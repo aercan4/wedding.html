@@ -1,0 +1,148 @@
+@use "sass:color";
+@use "sass:math";
+
+@use "../config/mixins";
+@use "../config/variable";
+
+.tab-content {
+  opacity: 1;
+  animation: filteredScale variable.$transition alternate forwards;
+
+  &.filtering {
+    animation: filteringScale variable.$transition alternate forwards;
+  }
+
+  &.filtered {
+    display: none;
+  }
+
+  @keyframes filteringScale {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes filteredScale {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+.tab {
+  position: relative;
+  width: 100%;
+
+  &-link-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-left: var(--container-pusher);
+    padding-right: var(--container-pusher);
+    border-bottom: 1px solid variable.$c-border;
+    margin-bottom: 6rem;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    @include mixins.bp(tablet) {
+      justify-content: flex-start;
+    }
+
+    @include mixins.bp(mobile) {
+      margin-bottom: 4rem;
+    }
+  }
+
+  .animated-tabs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    gap: 6rem;
+
+    @include mixins.bp(tablet) {
+      width: max-content;
+      justify-content: flex-start;
+    }
+
+    @include mixins.bp(mobile) {
+      gap: 1.6rem;
+    }
+
+    &-item {
+      display: flex;
+      gap: 2.4rem;
+      padding: 3.8rem 2rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: variable.$transition;
+      font-weight: 600;
+      z-index: 2;
+      position: relative;
+      width: max-content;
+      color: rgba(variable.$c-black, .5);
+      letter-spacing: 0.3px;
+      flex-shrink: 0;
+
+      @include mixins.bp(mobile) {
+        font-size: 1.4rem;
+        padding: 2.8rem 1rem;
+
+      }
+
+      &.active {
+        color: variable.$c-black;
+      }
+
+      &:hover {
+        color: variable.$c-black;
+      }
+
+    }
+
+    &-line {
+      background: variable.$c-black;
+      height: 0.3rem;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      transition: variable.$transition;
+    }
+  }
+
+
+}
+
+
+.filtered-item {
+  animation: fadeIn .6s alternate forwards;
+
+  &.hide {
+    display: none !important;
+  }
+}
+
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

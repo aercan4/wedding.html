@@ -1,0 +1,29 @@
+@use "config/mixins";
+@use "config/_variable.scss";
+@use "config/_normalize.scss";
+@use "config/_config.scss";
+@use "config/_fonts.scss";
+@use "config/swiper-settings";
+@use "config/wordpress.scss";
+
+@use "global/_global.scss";
+@use "helper/_utilities.scss";
+
+@use "components/_title.scss";
+@use "components/_text.scss";
+@use "components/_toptitle.scss";
+@use "components/_button.scss";
+
+@use "components/_link.scss";
+@use "components/_tab.scss";
+
+@use "components/form/checkbox.scss";
+@use "components/form/input.scss";
+@use "components/_content.scss";
+@use "components/_social.scss";
+
+@use "global/_header.scss";
+@use "global/_footer.scss";
+
+@use "pages/index";
+@use "pages/contact";

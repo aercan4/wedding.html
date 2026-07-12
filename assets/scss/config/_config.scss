@@ -1,0 +1,45 @@
+@use "variable";
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  transition: variable.$transition-fast;
+}
+
+p {
+  margin: 0;
+}
+
+.icon-font {
+  display: inline-block;
+  display: inline-flex;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0;
+}
+
+
+button {
+  border: 0;
+  cursor: pointer;
+
+  &:focus {
+    outline: 0;
+  }
+}

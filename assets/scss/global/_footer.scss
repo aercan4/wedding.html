@@ -1,0 +1,11 @@
+@use "sass:color";
+@use "sass:math";
+@use "../config/mixins";
+@use "../config/variable";
+
+.footer {
+  position: relative;
+  padding: 0 var(--container-pusher);
+  border-top: 1px solid variable.$c-border;
+  padding-top: 10rem;
+}

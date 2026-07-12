@@ -1,0 +1,35 @@
+@use "sass:color";
+@use "sass:math";
+
+@use "../config/mixins";
+@use "../config/variable";
+
+.toptitle {
+  font-size: var(--font-size-toptitle);
+  line-height: 1.45em;
+  font-weight: 500;
+  color: variable.$c-black;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.16px;
+
+  &--md {
+    font-size: 1.7rem;
+
+    @include mixins.bp(mobile) {
+      font-size: 1.4rem;
+    }
+  }
+
+  &--xsm {
+    font-size: 1.3rem;
+
+    @include mixins.bp(tablet) {
+      font-size: 1.2rem;
+    }
+  }
+
+  &--light-gray {
+    color: rgba(variable.$c-black, 0.4);
+  }
+}

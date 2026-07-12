@@ -1,0 +1,94 @@
+@use "sass:color";
+@use "sass:math";
+
+@use "../config/mixins";
+@use "../config/variable";
+
+.title {
+  font-style: normal;
+  line-height: 1.5;
+  color: variable.$c-black;
+  font-weight: 400;
+  font-size: 1.6rem;
+
+  &--underline {
+    text-decoration: underline;
+  }
+
+  &--uppercase {
+    text-transform: uppercase;
+  }
+
+  &--black {
+    color: variable.$c-black;
+  }
+
+  &--medium-light {
+    color: rgba(variable.$c-black, .8);
+  }
+
+  &--light {
+    color: rgba(variable.$c-black, .6);
+  }
+
+  &--light-white {
+    color: variable.$c-bg;
+  }
+
+  &--white {
+    color: #fff;
+  }
+
+  &--orange {
+    color: variable.$c-black;
+  }
+
+  &--green {
+    color: variable.$c-green;
+  }
+
+  &--center {
+    text-align: center;
+  }
+
+  &--xl {
+    font-size: var(--font-size-title--xl);
+  }
+
+  &--sm {
+    font-size: var(--font-size-title--sm);
+  }
+
+  &--md {
+    font-size: var(--font-size-title--md);
+  }
+
+  &--lg {
+    font-size: var(--font-size-title--lg);
+  }
+
+  &--4xl {
+    font-size: var(--font-size-title--4xl);
+  }
+
+  &--xsm {
+    font-size: var(--font-size-title--xsm);
+  }
+
+  &--2xsm {
+    font-size: var(--font-size-title--2xsm);
+  }
+
+  &--xsm {
+    font-size: var(--font-size-title--xsm);
+
+  }
+
+  &--msm {
+    font-size: var(--font-size-title--msm);
+  }
+
+  &--5xsm {
+    font-size: var(--font-size-title--5xsm);
+  }
+}

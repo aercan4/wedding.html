@@ -1,0 +1,251 @@
+@use "sass:color";
+@use "sass:math";
+@use "../config/mixins";
+@use "../config/variable";
+
+input.wpcf7-not-valid,
+textarea.wpcf7-not-valid,
+select.wpcf7-not-valid {
+  border: 1px solid variable.$c-red !important;
+}
+
+.wpcf7 {
+  width: 100%;
+}
+
+.wpcf7-form-control-wrap {
+  border-radius: 0 !important;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+
+
+.wpcf7 form.invalid .wpcf7-response-output,
+.wpcf7 form.unaccepted .wpcf7-response-output,
+.wpcf7 form.failed .wpcf7-response-output,
+.wpcf7 form.aborted .wpcf7-response-output {
+  padding: 2rem;
+  color: variable.$c-red;
+  font-weight: 500;
+  background: transparent;
+  border: 0 !important;
+  margin-left: 0;
+  font-size: 1.5rem;
+  margin-right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1.6;
+  margin: 0 !important;
+
+  @include mixins.bp(mobile) {
+    font-size: 1.4rem;
+  }
+}
+
+.wpcf7 form.sent .wpcf7-response-output {
+  padding: 2rem;
+  color: variable.$c-green;
+  font-size: 1.5rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent !important;
+  margin: 0 !important;
+  text-align: center;
+  border: 0;
+  margin-left: 0;
+  margin-right: 0;
+  border-radius: 1rem !important;
+
+  @include mixins.bp(mobile) {
+    font-size: 1.4rem;
+  }
+}
+
+.modal-map .acf-map {
+  height: 100% !important;
+}
+
+.wpcf7-not-valid-tip {
+  color: variable.$c-red;
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-top: 1rem;
+}
+
+
+.grecaptcha-badge {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.swal2-popup {
+  padding: 3rem !important;
+}
+
+.swal2-title {
+  font-family: variable.$font-family-base !important;
+  color: #031b3b !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.swal2-icon {
+  margin: 0 auto !important;
+}
+
+.wpcf7-spinner {
+  position: absolute;
+  margin-top: 1rem;
+  margin-left: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.wpcf7-list-item {
+  label {
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+
+    input {
+      cursor: pointer;
+    }
+  }
+
+  &-label {
+    color: rgba(variable.$c-black, .6);
+    font-size: 1.4rem;
+    font-weight: 300;
+    user-select: none;
+    line-height: 1.3em;
+    margin-left: 2rem;
+    margin-top: -0.3rem;
+  }
+}
+
+
+input[type="checkbox"] {
+  position: relative;
+  cursor: pointer;
+  padding: 0;
+}
+
+input[type="checkbox"]:before {
+  content: "";
+  margin-right: 10px;
+  display: inline-block;
+  width: 2.2rem;
+  height: 2.2rem;
+  background: #f8f9fb;
+  border-radius: 0;
+  left: -1px;
+  top: -2px;
+  position: absolute;
+  border: 1px solid rgba(variable.$c-black, 0.1);
+  border-radius: 0.3rem;
+
+  @include mixins.bp(desktop) {
+    left: -0.1rem;
+    top: -0.1rem;
+  }
+
+  @include mixins.bp(mobile) {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
+}
+
+input[type="checkbox"]:checked:before {
+  background: variable.$c-black;
+}
+
+input[type="checkbox"]:disabled {
+  color: #b8b8b8;
+  cursor: auto;
+}
+
+input[type="checkbox"]:disabled:before {
+  box-shadow: none;
+  background: #ddd;
+}
+
+input[type="checkbox"]:checked:after {
+  content: "";
+  background-image: url("../img/tik.svg");
+  background-size: 1em;
+  background-repeat: no-repeat;
+  background-position: 15% 18%;
+  position: absolute;
+  left: 4px;
+  top: 3px;
+  width: 1em;
+  height: 1em;
+  font-size: 1.3rem;
+
+  @include mixins.bp(desktop) {
+    left: 3px;
+    top: 2.5px;
+    background-position: 19% 18%;
+  }
+
+  @include mixins.bp(mobile) {
+    background-position: 15% 18%;
+  }
+}
+
+span.wpcf7-list-item {
+  margin: 0 0 0 0;
+}
+
+.checkbox-group {
+  .wpcf7-form-control-wrap {
+    .wpcf7-checkbox {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.4rem;
+      justify-content: flex-start;
+    }
+
+  }
+}
+
+
+
+.loader {
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: variable.$transition;
+
+  &.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  img {
+    width: 5rem;
+    height: 5rem;
+    animation: spin 1s linear infinite;
+  }
+}
+
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

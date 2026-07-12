@@ -1,0 +1,39 @@
+@use "sass:color";
+@use "sass:math";
+@use "../config/mixins";
+@use "../config/variable";
+
+.link {
+  font-size: 1.6rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: variable.$transition;
+  cursor: pointer;
+  color: variable.$c-text;
+  font-feature-settings: 'salt' on;
+  letter-spacing: 0.16px;
+
+  @include mixins.bp(mobile) {
+    font-size: 1.5rem;
+  }
+
+  &:hover {
+    color: variable.$c-black;
+  }
+
+  &--underline {
+    text-decoration: underline;
+  }
+
+
+  &__icon {
+    transition: variable.$transition;
+  }
+
+  &--i-right , &--i-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+}

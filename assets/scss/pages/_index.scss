@@ -1,0 +1,7 @@
+@use "../config/variable";
+
+
+.index {
+    padding-top: calc(var(--header-height) + 4rem);
+    min-height: 100rem;
+}

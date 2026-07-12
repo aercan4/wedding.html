@@ -1,0 +1,152 @@
+@use "sass:color";
+@use "sass:math";
+@use "../../config/mixins";
+@use "../../config/variable";
+
+// Tick Checkbox
+.checkbox {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  margin-bottom: 0;
+  margin: 2rem 0;
+
+  @include mixins.bp(mobile) {
+    align-items: flex-start;
+  }
+
+
+  &.input-error {
+    .error {
+      position: absolute;
+    }
+  }
+
+  .error {
+    position: absolute;
+    bottom: -1.5rem;
+  }
+
+
+  &__input {
+    -webkit-appearance: none;
+
+    -moz-appearance: none;
+    visibility: hidden;
+    width: 0;
+
+    &:checked {
+
+      &~span {
+        // background-color: variable.$c-black !important;
+        background-image: url("../img/tik.svg");
+      }
+
+      &~.tick-checkbox-content .tick-checkbox__title {
+        color: variable.$c-black;
+
+
+      }
+    }
+
+    &:not(:checked) {
+
+      &:hover~.tick-checkbox-content .tick-checkbox__title {
+        color: rgba(variable.$c-black, .8);
+      }
+    }
+  }
+
+  &--radio {
+    .checkbox {
+      &__input {
+        &~span {
+          //background: #EDE9E1;
+          background: transparent;
+          position: relative;
+          // border: 1px solid variable.$c-blue;
+
+          &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-48%, -52%);
+            width: 1em;
+            height: 1em;
+            border-radius: 50%;
+            // background: variable.$c-blue;
+            transition: variable.$transition;
+            opacity: 0;
+            font-size: 10px;
+          }
+        }
+
+        &:checked {
+          &~span {
+            box-shadow: 0 0 0 2px red;
+            background: variable.$c-bg;
+
+            &::after {
+              opacity: 1;
+            }
+          }
+
+        }
+      }
+
+      &__toggle {
+        border-radius: 50%;
+        font-size: 18px;
+      }
+    }
+  }
+
+  &__toggle {
+    outline: none;
+    height: 1em;
+    width: 1em;
+    display: inline-flex;
+    position: relative;
+    margin: 0;
+    cursor: pointer;
+    background-color: #fff;
+    border: 1px solid rgba(variable.$c-black, 0.60);
+    flex-shrink: 0;
+    transition: variable.$transition-fast;
+    background-repeat: no-repeat;
+    background-position-x: 50%;
+    background-position-y: 45%;
+    background-size: .5em;
+    font-size: 1.8rem;
+    box-shadow: 0px 4px 6px -5px rgba(177, 188, 209, 0.30);
+
+    @include mixins.bp(tablet-small) {
+      font-size: 18px;
+      margin-top: .2rem;
+    }
+  }
+
+  &-content {
+    margin-left: 1rem;
+    width: 100%;
+
+    .text,
+    .link {
+      letter-spacing: -0.28px;
+    }
+  }
+}
+
+.checkbox__title-highlighted {
+  color: variable.$c-black;
+  font-weight: 600;
+  text-decoration-line: underline;
+}
+
+.checkbox__title {
+  color: rgba(variable.$c-black, 0.60);
+  font-size: 1.4rem;
+  line-height: 20px;
+}
